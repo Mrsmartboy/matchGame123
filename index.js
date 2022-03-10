@@ -1,24 +1,21 @@
 import './index.css'
 
-const ThumbnailItem = props => {
-  const {thumbnail, onClickThumbnail} = props
-  const {id, thumbnailUrl} = thumbnail
+const TabItem = props => {
+  const {tabDetails, active, onClick} = props
 
-  const onClickThumbnailItem = () => {
-    onClickThumbnail(id)
+  const onClickTabItem = () => {
+    onClick(tabDetails.tabId)
   }
-
   return (
-    <li className="thumbnail-container">
+    <li className="tab-item">
       <button
-        className="thumbnail-button"
+        className={`tab-item-button ${active ? 'active-tab' : ''}`}
         type="button"
-        onClick={onClickThumbnailItem}
+        onClick={onClickTabItem}
       >
-        <img className="thumbnail-image" src={thumbnailUrl} alt="thumbnail" />
+        {tabDetails.displayText}
       </button>
     </li>
   )
 }
-
-export default ThumbnailItem
+export default TabItem
